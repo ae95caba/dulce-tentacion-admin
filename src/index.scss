@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+$google-font: "Roboto", sans-serif;
+$purpple: #100b35;
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  outline: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+#root {
+  //  color: white;
+  color: red;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+
+#header,
+#footer {
+  background-color: $purpple;
+}
+
+#header {
+  container-name: header;
+  container-type: inline-size;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  .logo {
+    img {
+      width: 3rem;
+    }
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    ul {
+      display: flex;
+      gap: 2rem;
+    }
+  }
+  #checkbox {
+    display: none;
+  }
+  .burger-menu {
+    width: 3rem;
+    filter: invert(100%);
+    background-image: url("./assets/burger-menu.png");
+    background-size: cover;
+  }
+}
+
+//main table
+
+main {
+  background-color: grey;
+  background-size: cover;
+  padding: 2rem 0rem;
+
+  .content {
+    width: 100vw;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin: auto;
+    padding: 0rem 1rem;
+
+    hr {
+      width: 66.6%;
+      height: 3px;
+
+      background-color: white;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+
+      table {
+        margin: auto;
+        border-spacing: 20px;
+
+        border: 2px solid white;
+        tbody {
+          tr {
+            td {
+              border-radius: 1rem;
+              overflow: hidden;
+
+              input {
+                background-color: white;
+                width: 5rem;
+                color: black;
+                text-align: center;
+                font-style: inherit;
+                padding: 0.5rem 0rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    .buttons-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 2rem;
+      .edit {
+        grid-column: 1/3;
+      }
+      .add {
+        grid-column: 1/3;
+      }
+      button {
+        background-color: black;
+      }
+    }
+  }
+}
+
+button {
+  padding: 1rem 2rem;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  .social {
+    display: flex;
+    gap: 2rem;
+    img {
+      width: 3rem;
+    }
+    display: flex;
+  }
+  .join,
+  .donate {
+    font-weight: 900;
+  }
+}
+
+@container header (max-width:420px) {
+  nav {
+    display: none !important;
+  }
+}
+@container header (min-width:421px) {
+  .burger-menu,
+  aside {
+    display: none !important;
+  }
+}
+
+aside {
+  display: none;
+  position: absolute;
+  padding: 2rem;
+  bottom: -100vh;
+  height: 100vh;
+  right: 0px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+input:checked + aside {
+  display: block;
+}
+
+input:checked ~ .burger-menu {
+  background-image: url("./assets/x.svg") !important;
+}
