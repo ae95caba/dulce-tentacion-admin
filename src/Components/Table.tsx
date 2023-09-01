@@ -114,21 +114,7 @@ function TableRow({
             />
           </td>
         ))}
-        {/* <td>
-            <input
-              type="submit"
-              disabled={!enableEdit}
-              value="delete"
-              onClick={() => {
-                const virtualProductsArrCopy = [
-                  ...structuredClone(virtualProductsArr),
-                ];
-                virtualProductsArrCopy.splice(index, 1);
-                console.log(virtualProductsArrCopy);
-                setVirtualProductsArr(virtualProductsArrCopy);
-              }}
-            />
-          </td> */}
+
         <td style={{ display: "flex" }}>
           <Buttons
             key={`buttons-${virtualProduct._id}`}
@@ -232,8 +218,6 @@ function Buttons({
             value="aceptar"
             type="submit"
             onClick={() => {
-              //setDataFromDb([...structuredClone(content)]);
-              //saveVirtualProductsToDb();
               updateProductInDbFromState(virtualProductsArr[index]);
               setEnableEdit(false);
             }}

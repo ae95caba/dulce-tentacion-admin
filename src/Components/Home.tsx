@@ -6,9 +6,9 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import LogoutButton from "./LogoutButton";
 import Table from "./Table";
-import AddProductForm from "./AddProductForm";
+
+import FlavoursList from "./FlavoursList";
 export default function Home() {
-  const [catalog, setCatalog] = useState();
   const [isUserOnline, setIsUserOnline] = useState(false);
 
   async function checkTokenValidityAndSetUserOnlineStatus(token) {
@@ -71,6 +71,7 @@ export default function Home() {
             <LogoutButton setIsUserOnline={setIsUserOnline} />
             COntent here
             <Table />
+            <FlavoursList />
           </div>
         )}
       </div>
