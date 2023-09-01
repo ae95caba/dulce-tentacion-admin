@@ -6,6 +6,7 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import LogoutButton from "./LogoutButton";
 import Table from "./Table";
+import AddProductForm from "./AddProductForm";
 export default function Home() {
   const [catalog, setCatalog] = useState();
   const [isUserOnline, setIsUserOnline] = useState(false);
