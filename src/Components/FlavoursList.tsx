@@ -45,7 +45,7 @@ export default function FlavoursList() {
 
   return (
     <div>
-      <ul>
+      <ul className="flavours-list">
         {virtualFlavoursArr?.map((virtualFlavour, index) => (
           <li key={virtualFlavour._id}>
             <label>

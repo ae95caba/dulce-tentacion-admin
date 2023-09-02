@@ -132,14 +132,18 @@ main {
   }
 }
 
-ul {
+ul.flavours-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   li {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    // flex-direction: column;
+    gap: 1rem;
     label {
       display: flex;
-      justify-content: space-between;
+      gap: 1rem;
     }
   }
 }
