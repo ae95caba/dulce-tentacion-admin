@@ -25,6 +25,17 @@ export default function AddProductForm({ fetchProductsAndSetState }) {
   }
 
   async function addProductToDb(product) {
+    const body = {
+      name: product.name,
+      price: product.price,
+      imgUrl: product.imgUrl,
+      outOfStock: product.outOfStock,
+    };
+
+    if (product.flavours !== "") {
+      body.flavours = product.flavours;
+    }
+
     try {
       const token = JSON.parse(localStorage.getItem("jwtToken")).token;
       const requestOptions = {
@@ -33,13 +44,7 @@ export default function AddProductForm({ fetchProductsAndSetState }) {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name: product.name,
-          price: product.price,
-          imgUrl: product.imgUrl,
-          outOfStock: product.outOfStock,
-          flavours: product.flavours,
-        }),
+        body: JSON.stringify(body),
       };
 
       const response = await fetch(
