@@ -29,7 +29,7 @@ export default function Home() {
       async function checkTokenValidity() {
         try {
           let response = await fetch(
-            `http://localhost:3000/auth`,
+            `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/auth`,
             requestOptions
           );
           if (!response.ok) {

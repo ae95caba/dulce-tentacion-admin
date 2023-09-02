@@ -38,7 +38,7 @@ export default function AddFlavourForm({ fetchFlavoursAndSetState }) {
       };
 
       const response = await fetch(
-        `http://localhost:3000/flavours`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/flavours`,
         requestOptions
       );
 

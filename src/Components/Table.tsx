@@ -16,7 +16,7 @@ function Table() {
     };
     try {
       const response = await fetch(
-        `http://localhost:3000/products`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/products`,
         requestOptions
       );
       if (!response.ok) {
@@ -164,7 +164,7 @@ function Buttons({
 
     try {
       const request = await fetch(
-        `http://localhost:3000/products/${product._id}`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/products/${product._id}`,
         requestOptions
       );
       if (!request.ok) {
@@ -197,7 +197,7 @@ function Buttons({
         }), // Set the body content
       };
       const response = await fetch(
-        `http://localhost:3000/products/${virtualProduct._id}`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/products/${virtualProduct._id}`,
         fetchOptions
       );
       if (response.ok) {

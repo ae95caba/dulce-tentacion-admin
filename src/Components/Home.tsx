@@ -21,7 +21,7 @@ export default function Home() {
     };
     try {
       const response = await fetch(
-        `http://localhost:3000/users/auth`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/users/auth`,
         requestOptions
       );
       if (!response.ok) {

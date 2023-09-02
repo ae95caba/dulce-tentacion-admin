@@ -25,7 +25,7 @@ export default function Signup() {
     };
 
     const response = await fetch(
-      `http://localhost:3000/users/signup`,
+      `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/users/signup`,
       requestOptions
     );
 

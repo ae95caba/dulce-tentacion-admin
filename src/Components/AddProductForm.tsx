@@ -43,7 +43,7 @@ export default function AddProductForm({ fetchProductsAndSetState }) {
       };
 
       const response = await fetch(
-        `http://localhost:3000/products`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/products`,
         requestOptions
       );
 

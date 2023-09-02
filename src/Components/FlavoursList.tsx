@@ -5,17 +5,16 @@ export default function FlavoursList() {
   const [dbFlavoursArr, setDbFlavoursArr] = useState();
   const [virtualFlavoursArr, setVirtualFlavoursArr] = useState();
   const [enableEdit, setEnableEdit] = useState(false);
+
   async function fetchFlavoursAndSetState() {
-    const token = JSON.parse(localStorage.getItem("jwtToken")).token;
     const requestOptions = {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`, // Add the JWT to the Authorization header
       },
     };
     try {
       const response = await fetch(
-        `http://localhost:3000/flavours`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/flavours`,
         requestOptions
       );
       if (!response.ok) {
@@ -105,7 +104,7 @@ function Buttons({
 
     try {
       const request = await fetch(
-        `http://localhost:3000/flavours/${flavour._id}`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/flavours/${flavour._id}`,
         requestOptions
       );
       if (!request.ok) {
@@ -136,7 +135,7 @@ function Buttons({
         }), // Set the body content
       };
       const response = await fetch(
-        `http://localhost:3000/flavours/${virtualFlavour._id}`,
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/flavours/${virtualFlavour._id}`,
         fetchOptions
       );
       if (response.ok) {

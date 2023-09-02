@@ -17,7 +17,10 @@ export default function AdminDashboard() {
       },
     };
     try {
-      let response = await fetch(`http://localhost:3000/posts`, requestOptions);
+      let response = await fetch(
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/posts`,
+        requestOptions
+      );
       if (!response.ok) {
         throw new Error("Request failed");
       }
@@ -48,7 +51,10 @@ export default function AdminDashboard() {
         }),
       };
 
-      let response = await fetch(`http://localhost:3000/posts`, requestOptions);
+      let response = await fetch(
+        `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/posts`,
+        requestOptions
+      );
 
       let post = await response.json();
       console.log(`the post is ${post}`);
