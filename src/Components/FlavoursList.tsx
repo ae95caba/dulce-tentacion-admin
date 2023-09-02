@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import AddFlavourForm from "./AddFLavourForm";
 export default function FlavoursList() {
   const [dbFlavoursArr, setDbFlavoursArr] = useState();
   const [virtualFlavoursArr, setVirtualFlavoursArr] = useState();
@@ -44,39 +44,43 @@ export default function FlavoursList() {
   }, [dbFlavoursArr]);
 
   return (
-    <ul>
-      {virtualFlavoursArr?.map((virtualFlavour, index) => (
-        <li key={virtualFlavour._id}>
-          <label>
-            {virtualFlavour.name}
-            <input
-              disabled={!enableEdit}
-              onChange={(e) => {
-                const newValue = e.target.checked;
-                const virtualFlavoursArrCopy = [
-                  ...structuredClone(virtualFlavoursArr),
-                ];
-                virtualFlavoursArrCopy[index].outOfStock = newValue;
-                setVirtualFlavoursArr(virtualFlavoursArrCopy);
-                console.log(`the new value is ${newValue}`);
-              }}
-              checked={virtualFlavour.outOfStock}
-              type="checkbox"
-              name={virtualFlavour.name}
+    <div>
+      <ul>
+        {virtualFlavoursArr?.map((virtualFlavour, index) => (
+          <li key={virtualFlavour._id}>
+            <label>
+              {virtualFlavour.name}
+              <input
+                disabled={!enableEdit}
+                onChange={(e) => {
+                  const newValue = e.target.checked;
+                  const virtualFlavoursArrCopy = [
+                    ...structuredClone(virtualFlavoursArr),
+                  ];
+                  virtualFlavoursArrCopy[index].outOfStock = newValue;
+                  setVirtualFlavoursArr(virtualFlavoursArrCopy);
+                  console.log(`the new value is ${newValue}`);
+                }}
+                checked={virtualFlavour.outOfStock}
+                type="checkbox"
+                name={virtualFlavour.name}
+              />
+            </label>
+            <Buttons
+              index={index}
+              key={virtualFlavour._id}
+              enableEdit={enableEdit}
+              setEnableEdit={setEnableEdit}
+              fetchFlavoursAndSetState={fetchFlavoursAndSetState}
+              setVirtualFlavoursArr={setVirtualFlavoursArr}
+              virtualFlavoursArr={virtualFlavoursArr}
+              dbFlavoursArr={dbFlavoursArr}
             />
-          </label>
-          <Buttons
-            index={index}
-            enableEdit={enableEdit}
-            setEnableEdit={setEnableEdit}
-            fetchFlavoursAndSetState={fetchFlavoursAndSetState}
-            setVirtualFlavoursArr={setVirtualFlavoursArr}
-            virtualFlavoursArr={virtualFlavoursArr}
-            dbFlavoursArr={dbFlavoursArr}
-          />
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+      <AddFlavourForm fetchFlavoursAndSetState={fetchFlavoursAndSetState} />
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@ import Table from "./Table";
 import FlavoursList from "./FlavoursList";
 export default function Home() {
   const [isUserOnline, setIsUserOnline] = useState(false);
-
+  const isProduction = process.env.NODE_ENV === "production";
   async function checkTokenValidityAndSetUserOnlineStatus(token) {
     const requestOptions = {
       method: "POST",
@@ -63,7 +63,8 @@ export default function Home() {
         Home
         {!isUserOnline ? (
           <div>
-            <Signup />
+            {!isProduction && <Signup />}
+
             <Signin setIsUserOnline={setIsUserOnline} />
           </div>
         ) : (

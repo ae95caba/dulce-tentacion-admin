@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import uniqid from "uniqid";
+import { useEffect, useState, useContext } from "react";
+import TableContext from "../Contexts/TableContext";
 import AddProductForm from "./AddProductForm";
 
 function Table() {
@@ -61,16 +61,23 @@ function Table() {
           <tbody>
             {virtualProductsArr?.map((virtualProduct, index) => (
               //return a row per product
-              <TableRow
-                key={`row-${virtualProduct._id}`}
-                fetchProductsAndSetState={fetchProductsAndSetState}
-                index={index}
-                virtualProductsArr={virtualProductsArr}
-                dbProductsArr={dbProductsArr}
-                setVirtualProductsArr={setVirtualProductsArr}
-                virtualProduct={virtualProduct}
-                productKeys={productKeys}
-              />
+
+              <TableContext.Provider
+                value={{
+                  productKeys,
+                  fetchProductsAndSetState,
+                  virtualProductsArr,
+                  setVirtualProductsArr,
+                  dbProductsArr,
+                  setDbProductsArr,
+                }}
+              >
+                <TableRow
+                  key={`row-${virtualProduct._id}`}
+                  index={index}
+                  virtualProduct={virtualProduct}
+                />
+              </TableContext.Provider>
             ))}
           </tbody>
         </table>
@@ -84,14 +91,17 @@ export default Table;
 
 function TableRow({
   virtualProduct,
-  fetchProductsAndSetState,
-  productKeys,
+
   index,
-  virtualProductsArr,
-  setVirtualProductsArr,
-  dbProductsArr,
 }) {
   const [enableEdit, setEnableEdit] = useState(false);
+  const {
+    productKeys,
+    fetchProductsAndSetState,
+    virtualProductsArr,
+    setVirtualProductsArr,
+    dbProductsArr,
+  } = useContext(TableContext);
   return (
     <>
       <tr id={virtualProduct._id}>
@@ -119,11 +129,7 @@ function TableRow({
           <Buttons
             key={`buttons-${virtualProduct._id}`}
             enableEdit={enableEdit}
-            fetchProductsAndSetState={fetchProductsAndSetState}
             setEnableEdit={setEnableEdit}
-            setVirtualProductsArr={setVirtualProductsArr}
-            dbProductsArr={dbProductsArr}
-            virtualProductsArr={virtualProductsArr}
             index={index}
           />
         </td>
@@ -134,13 +140,18 @@ function TableRow({
 
 function Buttons({
   enableEdit,
-  fetchProductsAndSetState,
+
   setEnableEdit,
-  setVirtualProductsArr,
-  virtualProductsArr,
-  dbProductsArr,
+
   index,
 }) {
+  const {
+    fetchProductsAndSetState,
+    virtualProductsArr,
+    setVirtualProductsArr,
+    dbProductsArr,
+  } = useContext(TableContext);
+
   async function deleteProductFromDb(product) {
     const token = JSON.parse(localStorage.getItem("jwtToken")).token;
     const requestOptions = {
