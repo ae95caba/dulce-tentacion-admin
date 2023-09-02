@@ -180,21 +180,26 @@ function Buttons({
   }
 
   async function updateProductInDbFromState(virtualProduct) {
+    const body = {
+      name: product.name,
+      price: product.price,
+      imgUrl: product.imgUrl,
+      outOfStock: product.outOfStock,
+    };
+
+    if (product.flavours !== "") {
+      body.flavours = product.flavours;
+    }
+
     try {
       const token = JSON.parse(localStorage.getItem("jwtToken")).token;
       const fetchOptions = {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json",q
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name: virtualProduct.name,
-          price: virtualProduct.price,
-          imgUrl: virtualProduct.imgUrl,
-          outOfStock: virtualProduct.outOfStock,
-          flavours: virtualProduct.flavours,
-        }), // Set the body content
+        body: JSON.stringify(body), // Set the body content
       };
       const response = await fetch(
         `https://colossal-zorah-dasfg2t4gdfsgs.koyeb.app/products/${virtualProduct._id}`,
