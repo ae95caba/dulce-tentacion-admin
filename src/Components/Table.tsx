@@ -196,7 +196,7 @@ function Buttons({
       const fetchOptions = {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",q
+          "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(body), // Set the body content
