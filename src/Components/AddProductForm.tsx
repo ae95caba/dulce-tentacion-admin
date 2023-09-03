@@ -24,16 +24,16 @@ export default function AddProductForm({ fetchProductsAndSetState }) {
     }
   }
 
-  async function addProductToDb(product) {
+  async function addProductToDb(virtualProduct) {
     const body = {
-      name: product.name,
-      price: product.price,
-      imgUrl: product.imgUrl,
-      outOfStock: product.outOfStock,
+      name: virtualProduct.name,
+      price: virtualProduct.price,
+      imgUrl: virtualProduct.imgUrl,
+      outOfStock: virtualProduct.outOfStock,
     };
 
-    if (product.flavours !== "") {
-      body.flavours = product.flavours;
+    if (virtualProduct.flavours !== "") {
+      body.flavours = virtualProduct.flavours;
     }
 
     try {
