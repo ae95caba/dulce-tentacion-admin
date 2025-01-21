@@ -20,9 +20,10 @@ function shouldRunBuild(route: string): boolean {
   if (process.env.NODE_ENV !== "production") {
     return false;
   }
-
+  /* 
   const rebuildRoutes = process.env.REBUILD_ROUTES?.split(",") || [];
-  return rebuildRoutes.includes(route);
+  return rebuildRoutes.includes(route); */
+  return true;
 }
 
 async function tryToModifyDbWithAuth(settings: Settings) {
